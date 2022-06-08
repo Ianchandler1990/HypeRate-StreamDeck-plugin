@@ -1,0 +1,15 @@
+{
+  "Description": "hyperate Plugin", 
+  "Name": "hyperate Plugin", 
+  "Category": "hyperate", 
+  "com.hyperate.hyperate.action": {
+    "Name": "Action", 
+    "Tooltip": "hyperate"
+  },
+  "Localization": {
+    "More info": "More info",
+    "Message": "Message",
+    "Click Me": "Click Me",
+    "Button": "Button"
+  }
+}

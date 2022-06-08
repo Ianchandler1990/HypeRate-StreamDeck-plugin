@@ -1,0 +1,40 @@
+{
+  "Actions": [
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "HypeRate Plugin", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "hyperate", 
+      "UUID": "com.hyperate.hyperate.heartrate"
+    }
+  ], 
+  "SDKVersion": 2,
+  "Author": "Hyperate", 
+  "CodePath": "index.html", 
+  "PropertyInspectorPath": "propertyinspector/index.html", 
+  "Description": "Hyperate", 
+  "Name": "Hyperate Bot Plugin", 
+  "Icon": "action/images/action", 
+  "Category": "Hyperate",
+  "CategoryIcon": "action/images/actionimage",
+  "URL": "https://www.hyperate.io/", 
+  "Version": "1.0.0",
+  "OS": [
+    {
+        "Platform": "mac", 
+        "MinimumVersion" : "10.11"
+    },
+    {
+        "Platform": "windows", 
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software": 
+    {
+        "MinimumVersion" : "4.1"
+  }
+}
