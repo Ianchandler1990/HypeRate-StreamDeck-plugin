@@ -18,7 +18,7 @@ function enableHypeRate() {
             ref: 0,
           })
         );
-      }, 30000);
+      }, 10000);
       connectToHypeRate(id);
     };
     // Handle incoming message
