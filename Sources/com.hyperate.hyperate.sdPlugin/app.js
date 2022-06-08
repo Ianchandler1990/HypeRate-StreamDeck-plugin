@@ -1,5 +1,5 @@
 var support = "MozWebSocket" in window ? 'MozWebSocket' : ("WebSocket" in window ? 'WebSocket' : null);
-var apikey = "";
+var apikey = config.SECRET_API_KEY;
 var id = "";
 var payload
 function enableHypeRate() {
@@ -111,7 +111,6 @@ const action = {
         */
         this.settings = jsn.payload.settings;
         console.log("looking for setting", this.settings);
-        apikey = this.settings.apiKey;
         id = this.settings.HRid;
         
         // Nothing in the settings pre-fill, just something for demonstration purposes
@@ -123,7 +122,6 @@ const action = {
 
     onKeyUp: function (jsn) {
         this.doSomeThing(jsn, 'onKeyUp', 'green'); 
-        apikey = this.settings.apiKey;
         id = this.settings.HRid;
         payload = jsn.context;
         enableHypeRate();
