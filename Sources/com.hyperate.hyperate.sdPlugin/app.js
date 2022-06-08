@@ -37,14 +37,13 @@ function enableHypeRate() {
   }
   async function connectToHypeRate(sessionID) {
     console.log(`HypeRate - Joining ${sessionID}`);
-    window.localStorage.setItem("HypeRateId", sessionID);
     joinHypeRateChannel();
   }
   // Join the HypeRate Id on WebSocket
   async function joinHypeRateChannel() {
     window.hypeRateSocket.send(
       JSON.stringify({
-        topic: `hr:${window.localStorage.getItem("HypeRateId")}`,
+        topic: `hr:${id}`,
         event: "phx_join",
         payload: {},
         ref: 0,
