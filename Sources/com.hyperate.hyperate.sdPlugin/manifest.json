@@ -22,7 +22,7 @@
   "Category": "Hyperate",
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/", 
-  "Version": "1.0.1",
+  "Version": "1.0.2",
   "OS": [
     {
         "Platform": "mac", 
