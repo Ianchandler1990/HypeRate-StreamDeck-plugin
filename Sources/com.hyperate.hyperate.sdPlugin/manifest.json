@@ -13,16 +13,16 @@
     }
   ], 
   "SDKVersion": 2,
-  "Author": "Hyperate", 
+  "Author": "HypeRate", 
   "CodePath": "index.html", 
   "PropertyInspectorPath": "propertyinspector/index.html", 
-  "Description": "Hyperate", 
-  "Name": "Hyperate Bot Plugin", 
+  "Description": "HypeRate", 
+  "Name": "HypeRate Plugin", 
   "Icon": "action/images/action", 
   "Category": "Hyperate",
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/", 
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "OS": [
     {
         "Platform": "mac", 
