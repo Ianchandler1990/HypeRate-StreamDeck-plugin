@@ -21,3 +21,5 @@ Download available in the [Releases](https://github.com/Ianchandler1990/HypeRate
 # Source code
 
 The Sources folder contains the source code of the plugin.
+
+📫 How to reach me [Twitch](https://www.twitch.tv/ianchandler1990) [Twitter](https://twitter.com/IanChandler1990)
