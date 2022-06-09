@@ -15,7 +15,7 @@
 
 # Installation
 
-In the Release folder, you can find the file `com.hyperate.hyperate.streamDeckPlugin`. If you double-click this file on your machine, Stream Deck will install the plugin.
+Download available in the [Releases](https://github.com/Ianchandler1990/HypeRate-StreamDeck-plugin/releases) section.
 
 
 # Source code
