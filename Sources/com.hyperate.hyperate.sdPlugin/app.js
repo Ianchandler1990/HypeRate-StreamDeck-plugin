@@ -1,5 +1,6 @@
 var support = "MozWebSocket" in window ? 'MozWebSocket' : ("WebSocket" in window ? 'WebSocket' : null);
 var apikey = config.SECRET_API_KEY;
+var hrimage = config.HRimg;
 var id = "";
 var payload
 function enableHypeRate() {
@@ -27,7 +28,8 @@ function enableHypeRate() {
       if (eventData.event !== "hr_update") {
         return;
       }
-      connected(eventData.payload.hr);
+      $SD.api.setTitle(payload, eventData.payload.hr);
+      console.log(eventData.payload.hr);
     };
     // Reconnect on disconnect
     window.hypeRateSocket.onclose = function (event) {
@@ -123,6 +125,7 @@ const action = {
         this.doSomeThing(jsn, 'onKeyUp', 'green'); 
         id = this.settings.HRid;
         payload = jsn.context;
+        $SD.api.setImage(payload, hrimage);
         enableHypeRate();
     },
 
@@ -168,8 +171,6 @@ const action = {
     setTitle: function(hr) {
         if (this.settings && this.settings.hasOwnProperty('HRid')) {
             console.log("watch the key on your StreamDeck - it got a new title...", hr);
-            $SD.api.setTitle(payload, hr);
-            console.log(hr);
         }
     },
 
