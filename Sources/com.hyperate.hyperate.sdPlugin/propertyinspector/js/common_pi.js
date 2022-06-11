@@ -2,22 +2,25 @@
  * to Property Inspector. Here we 'inject' the CSS styles into the DOM
  * when we receive this information. */
 
-function addDynamicStyles (clrs, fromWhere) {
-    // console.log("addDynamicStyles", clrs.highlightColor, clrs.highlightColor.slice(0, 7));
-    const node = document.getElementById('#sdpi-dynamic-styles') || document.createElement('style');
-    if (!clrs.mouseDownColor) clrs.mouseDownColor = Utils.fadeColor(clrs.highlightColor, -100);
-    const clr = clrs.highlightColor.slice(0, 7);
-    const clr1 = Utils.fadeColor(clr, 100);
-    const clr2 = Utils.fadeColor(clr, 60);
-    const metersActiveColor = Utils.fadeColor(clr, -60);
+function addDynamicStyles(clrs, fromWhere) {
+  // console.log("addDynamicStyles", clrs.highlightColor, clrs.highlightColor.slice(0, 7));
+  const node =
+    document.getElementById("#sdpi-dynamic-styles") ||
+    document.createElement("style");
+  if (!clrs.mouseDownColor)
+    clrs.mouseDownColor = Utils.fadeColor(clrs.highlightColor, -100);
+  const clr = clrs.highlightColor.slice(0, 7);
+  const clr1 = Utils.fadeColor(clr, 100);
+  const clr2 = Utils.fadeColor(clr, 60);
+  const metersActiveColor = Utils.fadeColor(clr, -60);
 
-    // console.log("%c    ", `background-color: #${clr}`, 'addDS', clr);
-    // console.log("%c    ", `background-color: #${clr1}`, 'addDS1', clr1);
-    // console.log("%c    ", `background-color: #${clr2}`, 'addDS2', clr2);
-    // console.log("%c    ", `background-color: #${metersActiveColor}`, 'metersActiveColor', metersActiveColor);
+  // console.log("%c    ", `background-color: #${clr}`, 'addDS', clr);
+  // console.log("%c    ", `background-color: #${clr1}`, 'addDS1', clr1);
+  // console.log("%c    ", `background-color: #${clr2}`, 'addDS2', clr2);
+  // console.log("%c    ", `background-color: #${metersActiveColor}`, 'metersActiveColor', metersActiveColor);
 
-    node.setAttribute('id', 'sdpi-dynamic-styles');
-    node.innerHTML = `
+  node.setAttribute("id", "sdpi-dynamic-styles");
+  node.innerHTML = `
 
     input[type="radio"]:checked + label span,
     input[type="checkbox"]:checked + label span {
@@ -64,5 +67,5 @@ function addDynamicStyles (clrs, fromWhere) {
         background: linear-gradient(${clr}, ${clr2} 20%, ${metersActiveColor} 45%, ${metersActiveColor} 55%, ${clr})
     }
     `;
-    document.body.appendChild(node);
-};
+  document.body.appendChild(node);
+}

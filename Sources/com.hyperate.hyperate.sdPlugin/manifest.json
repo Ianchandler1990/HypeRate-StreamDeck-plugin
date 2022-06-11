@@ -1,40 +1,39 @@
 {
   "Actions": [
     {
-      "Icon": "action/images/actionimage", 
-      "Name": "HypeRate Plugin", 
+      "Icon": "action/images/actionimage",
+      "Name": "HypeRate Plugin",
       "States": [
         {
           "Image": "action/images/action"
         }
-      ], 
-      "Tooltip": "hyperate", 
+      ],
+      "Tooltip": "hyperate",
       "UUID": "com.hyperate.hyperate.heartrate"
     }
-  ], 
+  ],
   "SDKVersion": 2,
-  "Author": "HypeRate", 
-  "CodePath": "index.html", 
-  "PropertyInspectorPath": "propertyinspector/index.html", 
-  "Description": "HypeRate", 
-  "Name": "HypeRate Plugin", 
-  "Icon": "action/images/action", 
-  "Category": "Hyperate",
+  "Author": "IanChandler1990",
+  "CodePath": "index.html",
+  "PropertyInspectorPath": "propertyinspector/index.html",
+  "Description": "HypeRate",
+  "Name": "HypeRate Plugin",
+  "Icon": "action/images/action",
+  "Category": "HypeRate",
   "CategoryIcon": "action/images/actionimage",
-  "URL": "https://www.hyperate.io/", 
-  "Version": "1.0.2",
+  "URL": "https://www.hyperate.io/",
+  "Version": "1.0.4",
   "OS": [
     {
-        "Platform": "mac", 
-        "MinimumVersion" : "10.11"
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
     },
     {
-        "Platform": "windows", 
-        "MinimumVersion" : "10"
+      "Platform": "windows",
+      "MinimumVersion": "10"
     }
   ],
-  "Software": 
-    {
-        "MinimumVersion" : "4.1"
+  "Software": {
+    "MinimumVersion": "4.1"
   }
 }
