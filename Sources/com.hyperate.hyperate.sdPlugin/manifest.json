@@ -22,7 +22,7 @@
   "Category": "Monitoring",
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/",
-  "Version": "1.0.4",
+  "Version": "1.0.5",
   "OS": [
     {
       "Platform": "mac",
