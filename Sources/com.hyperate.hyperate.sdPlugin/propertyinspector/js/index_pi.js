@@ -183,7 +183,11 @@ $SD.on('piDataChanged', (returnValue) => {
         }
 
     } else {
-        // Nothing
+        /* SAVE THE VALUE TO SETTINGS */
+        saveSettings(returnValue);
+
+        /* SEND THE VALUES TO PLUGIN */
+        sendValueToPlugin(returnValue, 'sdpi_collection');
     }
 });
 
