@@ -2,7 +2,6 @@
 
 `HypeRate` is a plugin that will display your heart rate on your stream deck.
 
-
 # Features
 
 - code written in Javascript
@@ -12,11 +11,11 @@
 
 ![](screenshot.gif)
 
-
 # Installation
 
-Download available in the [Releases](https://github.com/Ianchandler1990/HypeRate-StreamDeck-plugin/releases) section.
+Download available in the Stream deck store the [Stream Deck ](https://apps.elgato.com/plugins/com.hyperate.hyperate).
 
+Download available in the [Releases](https://github.com/Ianchandler1990/HypeRate-StreamDeck-plugin/releases) section.
 
 # Source code
 
