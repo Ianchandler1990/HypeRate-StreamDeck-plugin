@@ -3,6 +3,7 @@ var apikey = config.SECRET_API_KEY;
 var hrimage = config.HRimg;
 var id = "";
 var payload
+var streamdeckimage
 
 function enableHypeRate() {
   const hypeRateURL =
@@ -29,8 +30,8 @@ function enableHypeRate() {
     if (eventData.event !== "hr_update") {
       return;
     }
-    $SD.api.setTitle(payload, eventData.payload.hr);
     console.log(eventData.payload.hr);
+    makeimage(eventData.payload.hr);
   };
   // Reconnect on disconnect
   window.hypeRateSocket.onclose = function (event) {
@@ -54,6 +55,44 @@ async function joinHypeRateChannel() {
   );
 }
 
+function makeimage(heartrate) {
+
+  let elem = document.querySelector("canvas");
+  let ctx = elem.getContext("2d");
+  
+  var image = new Image();
+  image.onload = function () {
+    ctx.drawImage(image, 0, 0);
+    ctx.font = "bold 50px Arial";
+  
+    let pulse = heartrate;
+    let measurements = ctx.measureText(pulse);
+  
+    console.log(measurements);
+  
+    let text_width = measurements.width;
+    let text_height = measurements;
+  
+    console.log(text_width);
+  
+    let canvas_width = elem.width;
+    let canvas_height = elem.height;
+  
+    ctx.fillStyle = "white";
+    ctx.fillText(pulse, (canvas_width - text_width) / 2, canvas_height / 2 + 15);
+
+    ctx.fillStyle = "white";
+    ctx.font = "bold 30px Arial";
+    ctx.fillText("BPM", 42, 120);
+  
+    // Result here
+    console.log(elem.toDataURL());
+    streamdeckimage = elem.toDataURL();
+    $SD.api.setImage(payload, streamdeckimage);
+  };
+  image.src = hrimage;
+  }
+
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(data) {
@@ -68,7 +107,6 @@ function connected(data) {
   $SD.on('com.hyperate.hyperate.heartrate.propertyInspectorDidDisappear', (jsonObj) => {
     console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js]propertyInspectorDidDisappear:');
   });
-  action.setTitle(data);
 };
 
 // ACTIONS
@@ -89,8 +127,6 @@ const action = {
      * Here we look for this setting and use it to change the title of
      * the key.
      */
-
-    //this.setTitle(jsn);
   },
 
   /** 
@@ -119,14 +155,12 @@ const action = {
     if (!this.settings || Object.keys(this.settings).length === 0) {
       this.settings.Code = 'HypeRate';
     }
-    //this.setTitle(jsn);
   },
 
   onKeyUp: function (jsn) {
     this.doSomeThing(jsn, 'onKeyUp', 'green');
     id = this.settings.HRid;
     payload = jsn.context;
-    $SD.api.setImage(payload, hrimage);
     enableHypeRate();
   },
 

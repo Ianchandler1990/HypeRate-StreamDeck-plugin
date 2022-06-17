@@ -2,7 +2,7 @@
   "Actions": [
     {
       "Icon": "action/images/actionimage",
-      "Name": "HypeRate Plugin",
+      "Name": "HypeRate",
       "States": [
         {
           "Image": "action/images/action"
@@ -19,10 +19,10 @@
   "Description": "With HypeRate you will be able to see your heart rate in real time while you stream.  Easy setup in less than 2 minutes compatible with most heart rate trackers available!",
   "Name": "HypeRate Plugin",
   "Icon": "action/images/action",
-  "Category": "Monitoring",
+  "Category": "HypeRate Plugin",
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/",
-  "Version": "1.0.5",
+  "Version": "2.0.0",
   "OS": [
     {
       "Platform": "mac",
