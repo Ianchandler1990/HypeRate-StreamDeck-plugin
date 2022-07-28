@@ -23,6 +23,7 @@
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/",
   "Version": "2.0.0",
+  "DefaultWindowSize": [ 620, 750 ],
   "OS": [
     {
       "Platform": "mac",
