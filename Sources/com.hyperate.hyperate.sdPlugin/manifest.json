@@ -22,8 +22,8 @@
   "Category": "HypeRate Plugin",
   "CategoryIcon": "action/images/actionimage",
   "URL": "https://www.hyperate.io/",
-  "Version": "2.0.0",
-  "DefaultWindowSize": [ 620, 750 ],
+  "Version": "2.5.0",
+  "DefaultWindowSize": [ 900, 750 ],
   "OS": [
     {
       "Platform": "mac",

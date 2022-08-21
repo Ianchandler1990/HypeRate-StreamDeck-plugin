@@ -1,29 +1,52 @@
 var support = "MozWebSocket" in window ? 'MozWebSocket' : ("WebSocket" in window ? 'WebSocket' : null);
 var apikey = config.SECRET_API_KEY;
 var hrimage = config.HRimg;
+var HRimgbase = config.HRimgbase;
 var id = "";
 var payload
 var streamdeckimage
 
+var keyDown = false;
+var keyUp = false;
+var allowed = true;
+var start;
+var millis;
+var seconds = 0;
+var WSstate = "CLOSED"
+
+
+function Cleartime() {
+  millis = "0";
+  seconds = "0";
+}
+
+function DisconnectHypeRate() {
+  hypeRateSocket.close();
+  clearInterval(heartbeatInterval);
+  WSstate = "CLOSED"
+  $SD.api.setImage(payload, HRimgbase);
+
+}
 function enableHypeRate() {
   const hypeRateURL =
     "wss://app.hyperate.io/socket/websocket?token=" + apikey;
   window.hypeRateSocket = new WebSocket(hypeRateURL);
-  // Set hearbeat interval on connect
-  window.hypeRateSocket.onopen = () => {
-    console.log(`HypeRate WebSocket - Connected`);
-    setInterval(function () {
-      hypeRateSocket.send(
-        JSON.stringify({
-          topic: "phoenix",
-          event: "heartbeat",
-          payload: {},
-          ref: 0,
-        })
-      );
-    }, 10000);
-    connectToHypeRate(id);
-  };
+        // Set hearbeat interval on connect
+        hypeRateSocket.onopen = () => {
+          console.log(`HypeRate WebSocket - Connected`);
+          heartbeatInterval = setInterval(heartbeat, 10000);
+          connectToHypeRate(id);
+          WSstate = "connected"
+        };
+
+        function heartbeat() {
+          hypeRateSocket.send(JSON.stringify({
+            topic: "phoenix",
+            event: "heartbeat",
+            payload: {},
+            ref: 0,
+          }));
+        }
   // Handle incoming message
   window.hypeRateSocket.onmessage = (event) => {
     let eventData = JSON.parse(event.data);
@@ -36,7 +59,7 @@ function enableHypeRate() {
   // Reconnect on disconnect
   window.hypeRateSocket.onclose = function (event) {
     console.error(`HypeRate Error: ${event.code} ${event.reason}`);
-    enableHypeRate();
+    //enableHypeRate();
   };
 }
 async function connectToHypeRate(sessionID) {
@@ -99,6 +122,7 @@ function connected(data) {
   // Subscribe to the willAppear and other events
   $SD.on('com.hyperate.hyperate.heartrate.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
   $SD.on('com.hyperate.hyperate.heartrate.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
+  $SD.on('com.hyperate.hyperate.heartrate.keyDown', (jsonObj) => action.onkeyDown(jsonObj));
   $SD.on('com.hyperate.hyperate.heartrate.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
   $SD.on('com.hyperate.hyperate.heartrate.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
   $SD.on('com.hyperate.hyperate.heartrate.propertyInspectorDidAppear', (jsonObj) => {
@@ -161,9 +185,34 @@ const action = {
     this.doSomeThing(jsn, 'onKeyUp', 'green');
     id = this.settings.HRid;
     payload = jsn.context;
-    enableHypeRate();
+    //enableHypeRate();
+
+        keyDown = false;
+        keyUp = true;
+        millis = Date.now() - start;
+        seconds = Math.floor(millis / 1000);
+      
+      if (seconds > 5) {
+        console.log("LongPress");
+        setTimeout(Cleartime, 2000);
+        DisconnectHypeRate();
+      }
+      if (seconds < 5 && WSstate == "CLOSED") {
+        console.log("Shortpress");
+        setTimeout(Cleartime, 2000);
+        enableHypeRate();
+      }
+    ;
   },
 
+  onkeyDown: function (jsn) {
+    this.doSomeThing(jsn, 'onKeydown', 'green');
+    
+      allowed = false;
+      keyDown = true;
+      keyUp = false;
+      start = Date.now();
+  },
   onSendToPlugin: function (jsn) {
     /**
      * This is a message sent directly from the Property Inspector 
